@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Latitude — Quality Maths Resources for Every Classroom</title>
+  <meta name="description" content="Quality maths study materials designed to work in any classroom, anywhere in the world. Free and premium resources on TPT and Tes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:      #1F3864;
+      --navy-deep: #152848;
+      --blue:      #1F5C8B;
+      --green:     #375623;
+      --purple:    #7B2D8B;
+      --gold:      #FFC832;
+      --gold-dark: #C8930A;
+      --off-white: #F8FAFA;
+      --text-dark: #1a2a3a;
+      --text-mid:  #445566;
+      --text-light:#778899;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--off-white);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .stripes { position: relative; overflow: hidden; }
+    .stripes::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        135deg, transparent, transparent 26px,
+        rgba(255,255,255,0.045) 26px, rgba(255,255,255,0.045) 27px
+      );
+      pointer-events: none;
+    }
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(31,56,100,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,56,100,0.045) 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-color: #ffffff;
+    }
+
+    /* HEADER */
+    header { background: var(--navy); }
+    .header-inner {
+      position: relative; z-index: 2;
+      max-width: 980px; margin: 0 auto;
+      padding: 56px 32px 64px; text-align: center;
+    }
+    .wordmark {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+    .gold-rule { width: 44px; height: 2px; background: var(--gold); margin: 8px auto 12px; }
+    .header-series {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800; color: #fff;
+      line-height: 1.08; margin-bottom: 18px;
+    }
+    .header-tagline {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-weight: 300; color: rgba(255,255,255,0.65);
+      line-height: 1.7; max-width: 500px;
+      margin: 0 auto 40px;
+    }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 6px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem; font-weight: 600;
+      text-decoration: none; letter-spacing: 0.02em;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold { background: var(--gold); color: var(--navy-deep); box-shadow: 0 4px 18px rgba(255,200,50,0.3); }
+    .btn-gold:hover { box-shadow: 0 8px 26px rgba(255,200,50,0.45); }
+    .btn-ghost { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.22); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.17); }
+
+    /* PLATFORM KEY */
+    .platform-key {
+      background: #ffffff;
+      border-bottom: 1px solid rgba(31,56,100,0.08);
+      padding: 10px 32px;
+    }
+    .platform-key-inner {
+      max-width: 980px; margin: 0 auto;
+      display: flex; gap: 24px; align-items: center;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .pk-label {
+      font-size: 0.7rem; font-weight: 500;
+      color: var(--text-light); letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .pk-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.75rem; color: var(--text-mid);
+    }
+    .pk-dot {
+      width: 10px; height: 10px; border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .pk-dot.tpt { background: var(--blue); }
+    .pk-dot.tes { background: var(--green); }
+
+    /* MAIN */
+    main { flex: 1; max-width: 980px; margin: 0 auto; padding: 64px 32px 60px; width: 100%; }
+    .eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+    .section-h { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 10px; }
+    .section-p { font-size: 0.92rem; font-weight: 300; color: var(--text-mid); line-height: 1.72; max-width: 600px; margin-bottom: 32px; }
+
+    /* STUDY GUIDE CARDS */
+    .sg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 20px; }
+    .sg-card {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(31,56,100,0.09);
+      box-shadow: 0 2px 14px rgba(31,56,100,0.08);
+      transition: transform 0.18s, box-shadow 0.18s;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit; background: #fff;
+    }
+    .sg-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(31,56,100,0.14); }
+    .sg-band { padding: 20px 20px 16px; position: relative; }
+    .sg-band.c1 { background: var(--blue); }
+    .sg-band.c2 { background: var(--green); }
+    .sg-band.c3 { background: var(--purple); }
+    .sg-num {
+      position: relative; z-index: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px;
+      background: rgba(255,255,255,0.2); border-radius: 4px;
+      font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px;
+    }
+    .sg-title { position: relative; z-index: 1; font-size: 1.1rem; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 7px; }
+    .sg-pill { position: relative; z-index: 1; display: inline-block; background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.88); font-size: 0.7rem; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+    .sg-body { padding: 16px 20px 18px; flex: 1; display: flex; flex-direction: column; }
+    .sg-subtitle { font-size: 0.78rem; color: var(--text-mid); font-style: italic; margin-bottom: 10px; }
+    .sg-features { list-style: none; flex: 1; margin-bottom: 14px; }
+    .sg-features li { font-size: 0.78rem; color: var(--text-mid); padding: 2px 0 2px 14px; position: relative; }
+    .sg-features li::before { content: '·'; position: absolute; left: 3px; color: var(--text-light); }
+    .sg-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid rgba(31,56,100,0.08); }
+
+    /* DUAL PRICING */
+    .sg-price { display: flex; flex-direction: column; gap: 3px; }
+    .price-row { display: flex; align-items: baseline; gap: 5px; }
+    .price-amt { font-size: 0.85rem; font-weight: 700; }
+    .price-amt.tpt { color: var(--blue); }
+    .price-amt.tes { color: var(--green); }
+    .price-lbl { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
+
+    /* PLATFORM LINKS */
+    .plinks { display: flex; gap: 7px; }
+    .pl {
+      font-size: 0.68rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 4px;
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: opacity 0.15s;
+    }
+    .pl:hover { opacity: 0.75; }
+    .pl.tpt { background: #e8f2fb; color: var(--blue); border: 1px solid rgba(31,92,139,0.18); }
+    .pl.tes { background: #e8f4e8; color: var(--green); border: 1px solid rgba(55,86,35,0.18); }
+
+    /* BUNDLE */
+    .bundle {
+      background: var(--navy); border-radius: 10px;
+      padding: 24px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      margin-bottom: 60px; text-decoration: none; color: inherit;
+      box-shadow: 0 4px 20px rgba(31,56,100,0.18);
+      transition: transform 0.15s, box-shadow 0.15s; position: relative;
+    }
+    .bundle:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(31,56,100,0.28); }
+    .bundle-label { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; position: relative; z-index: 1; }
+    .bundle-title { font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 4px; position: relative; z-index: 1; }
+    .bundle-sub { font-size: 0.78rem; color: rgba(255,255,255,0.55); position: relative; z-index: 1; }
+    .bundle-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; position: relative; z-index: 1; flex-shrink: 0; }
+    .bundle-prices { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+    .bundle-price-row { display: flex; align-items: center; gap: 8px; }
+    .bundle-price {
+      font-size: 1rem; font-weight: 800; padding: 6px 16px; border-radius: 6px;
+    }
+    .bundle-price.tpt { background: var(--gold); color: var(--navy-deep); }
+    .bundle-price.tes { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+    .bundle-price-lbl { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+
+    /* DIVIDER */
+    .gold-divider { width: 40px; height: 3px; background: var(--gold-dark); margin-bottom: 40px; }
+
+    /* FREE CARDS */
+    .free-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 60px; }
+    .free-card {
+      border-radius: 8px; overflow: hidden;
+      border: 1px solid rgba(31,56,100,0.09);
+      box-shadow: 0 2px 8px rgba(31,56,100,0.06);
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .free-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(31,56,100,0.12); }
+    .free-band { background: var(--navy); padding: 14px 16px 12px; position: relative; }
+    .free-tag { position: relative; z-index: 1; font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .free-title { position: relative; z-index: 1; font-size: 0.88rem; font-weight: 700; color: #fff; line-height: 1.25; }
+    .free-body { padding: 12px 16px 14px; flex: 1; display: flex; flex-direction: column; }
+    .free-desc { font-size: 0.76rem; color: var(--text-mid); line-height: 1.55; flex: 1; margin-bottom: 12px; }
+    .free-links { display: flex; gap: 7px; flex-wrap: wrap; }
+
+    /* MISSION */
+    .mission { border-left: 4px solid var(--gold-dark); padding: 2px 0 2px 22px; }
+    .mission p { font-size: clamp(0.92rem, 2vw, 1.05rem); font-weight: 300; font-style: italic; color: var(--text-mid); line-height: 1.78; }
+
+    /* FOOTER */
+    footer { background: var(--navy-deep); padding: 28px 32px; text-align: center; }
+    .footer-inner { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .footer-wm { font-size: 11px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; }
+    .footer-links a { font-size: 0.76rem; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.22); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: translateY(0); } }
+    .f1 { opacity:0; animation: fadeUp .7s ease .1s forwards; }
+    .f2 { opacity:0; animation: fadeUp .7s ease .25s forwards; }
+    .f3 { opacity:0; animation: fadeUp .7s ease .4s forwards; }
+    .f4 { opacity:0; animation: fadeUp .7s ease .55s forwards; }
+    .f5 { opacity:0; animation: fadeUp .7s ease .7s forwards; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .header-inner, main { padding-left: 20px; padding-right: 20px; }
+      .bundle { flex-direction: column; align-items: flex-start; }
+      .bundle-right { align-items: flex-start; }
+      .bundle-prices { align-items: flex-start; }
+      .cta-row { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 260px; justify-content: center; }
+      .platform-key { padding: 10px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="stripes">
+  <div class="header-inner">
+    <div class="wordmark f1">Open Latitude</div>
+    <div class="gold-rule f1"></div>
+    <div class="header-series f2">Mathematics Series</div>
+    <h1 class="f2">Algebra<br>Study Guides</h1>
+    <p class="header-tagline f3">Quality maths resources designed to work in any classroom, anywhere in the world.</p>
+    <div class="cta-row f4">
+      <a href="https://www.teacherspayteachers.com/store/openlatitude" target="_blank" rel="noopener" class="btn btn-gold">Browse on TPT</a>
+      <a href="https://www.tes.com/teaching-resources/shop/OpenLatitude" target="_blank" rel="noopener" class="btn btn-ghost">Browse on Tes</a>
+    </div>
+  </div>
+</header>
+
+<!-- PLATFORM KEY -->
+<div class="platform-key">
+  <div class="platform-key-inner">
+    <span class="pk-label">Available on</span>
+    <div class="pk-item"><div class="pk-dot tpt"></div><strong>TPT</strong> — TeachersPayTeachers &nbsp;·&nbsp; Prices in USD ($)</div>
+    <div class="pk-item"><div class="pk-dot tes"></div><strong>Tes</strong> — Tes.com (UK &amp; International) &nbsp;·&nbsp; Prices in GBP (£)</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <p class="eyebrow f1">Individual Study Guides</p>
+  <h2 class="section-h f1">The Complete Algebra Series</h2>
+  <p class="section-p f2">Three in-depth guides spanning Grades 4–12. Step-by-step worked examples, key concept tables, practice problems and full answer keys. Colour and printer-friendly B&W included.</p>
+
+  <div class="sg-grid f3">
+
+    <!-- Guide 1 -->
+    <div class="sg-card">
+      <div class="sg-band c1 stripes">
+        <div class="sg-num">1</div>
+        <div class="sg-title">Introduction to Algebra</div>
+        <span class="sg-pill">Grades 4–6</span>
+      </div>
+      <div class="sg-body grid-bg">
+        <div class="sg-subtitle">Variables, Expressions &amp; Simple Equations</div>
+        <ul class="sg-features">
+          <li>Step-by-step worked examples</li>
+          <li>Key concepts &amp; reference tables</li>
+          <li>Practice problems + answer key</li>
+          <li>PDF &amp; editable DOCX included</li>
+        </ul>
+        <div class="sg-footer">
+          <div class="sg-price">
+            <div class="price-row"><span class="price-amt tpt">$3.50</span><span class="price-lbl">TPT</span></div>
+            <div class="price-row"><span class="price-amt tes">£2.50</span><span class="price-lbl">Tes</span></div>
+          </div>
+          <div class="plinks">
+            <a href="https://www.teacherspayteachers.com/Product/Introduction-to-Algebra-Study-Guide-Variables-Expressions-Simple-Equations-15634953" target="_blank" rel="noopener" class="pl tpt">TPT</a>
+            <a href="https://www.tes.com/teaching-resource/introduction-to-algebra-study-guide-variables-expressions-and-simple-equations-grades-4-6-13417420" target="_blank" rel="noopener" class="pl tes">Tes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guide 2 -->
+    <div class="sg-card">
+      <div class="sg-band c2 stripes">
+        <div class="sg-num">2</div>
+        <div class="sg-title">Algebra Equations</div>
+        <span class="sg-pill">Grades 6–8</span>
+      </div>
+      <div class="sg-body grid-bg">
+        <div class="sg-subtitle">Multi-Step Equations, Like Terms &amp; Distribution</div>
+        <ul class="sg-features">
+          <li>Step-by-step worked examples</li>
+          <li>Key concepts &amp; reference tables</li>
+          <li>Practice problems + answer key</li>
+          <li>PDF &amp; editable DOCX included</li>
+        </ul>
+        <div class="sg-footer">
+          <div class="sg-price">
+            <div class="price-row"><span class="price-amt tpt">$4.00</span><span class="price-lbl">TPT</span></div>
+            <div class="price-row"><span class="price-amt tes">£2.75</span><span class="price-lbl">Tes</span></div>
+          </div>
+          <div class="plinks">
+            <a href="https://www.teacherspayteachers.com/Product/Algebra-Equations-Study-Guide-Multi-Step-Equations-Distributive-Property-Li-15635060" target="_blank" rel="noopener" class="pl tpt">TPT</a>
+            <a href="https://www.tes.com/teaching-resource/algebra-equations-study-guide-multi-step-equations-distributive-property-and-like-terms-years-7-9-13418481" target="_blank" rel="noopener" class="pl tes">Tes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guide 3 -->
+    <div class="sg-card">
+      <div class="sg-band c3 stripes">
+        <div class="sg-num">3</div>
+        <div class="sg-title">Advanced Algebra</div>
+        <span class="sg-pill">Grades 9–12</span>
+      </div>
+      <div class="sg-body grid-bg">
+        <div class="sg-subtitle">Systems, Quadratics &amp; Functions</div>
+        <ul class="sg-features">
+          <li>Step-by-step worked examples</li>
+          <li>Key concepts &amp; reference tables</li>
+          <li>Practice problems + answer key</li>
+          <li>PDF &amp; editable DOCX included</li>
+        </ul>
+        <div class="sg-footer">
+          <div class="sg-price">
+            <div class="price-row"><span class="price-amt tpt">$4.50</span><span class="price-lbl">TPT</span></div>
+            <div class="price-row"><span class="price-amt tes">£3.00</span><span class="price-lbl">Tes</span></div>
+          </div>
+          <div class="plinks">
+            <a href="https://www.teacherspayteachers.com/Product/Advanced-Algebra-S-G-Systems-of-Equations-Quadratics-Functions-9-12-15635131" target="_blank" rel="noopener" class="pl tpt">TPT</a>
+            <a href="https://www.tes.com/teaching-resource/advanced-algebra-study-guide-systems-of-equations-quadratics-and-functions-years-10-13-igcse-13418515" target="_blank" rel="noopener" class="pl tes">Tes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bundle -->
+  <div class="bundle stripes f4">
+    <div>
+      <div class="bundle-label">Complete Series · Save $2 / Save £1.25</div>
+      <div class="bundle-title">Algebra Study Guide Bundle</div>
+      <div class="bundle-sub">All three guides · Grades 4–12 · Colour &amp; B&W · PDF &amp; DOCX</div>
+    </div>
+    <div class="bundle-right">
+      <div class="bundle-prices">
+        <div class="bundle-price-row">
+          <span class="bundle-price-lbl">TPT</span>
+          <span class="bundle-price tpt">$10 USD</span>
+        </div>
+        <div class="bundle-price-row">
+          <span class="bundle-price-lbl">Tes</span>
+          <span class="bundle-price tes">£7.00 GBP</span>
+        </div>
+      </div>
+      <div class="plinks">
+        <a href="https://www.teacherspayteachers.com/Product/Complete-Algebra-Study-Guide-Bundle-Grades-4-12-Variables-to-Advd-Functions-15643021" target="_blank" rel="noopener" class="pl tpt">TPT</a>
+        <a href="https://www.tes.com/teaching-resource/complete-algebra-study-guide-bundle-years-5-13-igcse-ib-all-three-guides-13418530" target="_blank" rel="noopener" class="pl tes">Tes</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Free Resources -->
+  <div class="gold-divider f1"></div>
+  <p class="eyebrow f1">Free Resources</p>
+  <h2 class="section-h f1">Practice &amp; Reference</h2>
+  <p class="section-p f2">Companion resources to the study guides — free on both platforms. Perfect for classroom practice, revision, or as a standalone reference.</p>
+
+  <div class="free-grid f3">
+
+    <div class="free-card">
+      <div class="free-band stripes">
+        <div class="free-tag">Free Resource</div>
+        <div class="free-title">Algebra Quick Reference Card</div>
+      </div>
+      <div class="free-body grid-bg">
+        <p class="free-desc">One page. Print it. Keep it. Variables to Quadratic Formula — Years 5 to 13.</p>
+        <div class="free-links">
+          <a href="https://www.teacherspayteachers.com/Product/Algebra-Quick-Ref-Card-Free-Print-Yrs-5-13-Variables-to-Quadratic-Formula-15677705" target="_blank" rel="noopener" class="pl tpt">TPT</a>
+          <a href="https://www.tes.com/teaching-resource/algebra-quick-ref-card-free-printable-yrs-5-13-variables-to-quadratic-formula-13420649" target="_blank" rel="noopener" class="pl tes">Tes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="free-card">
+      <div class="free-band stripes">
+        <div class="free-tag">Free · 21 Questions</div>
+        <div class="free-title">Intro to Algebra Practice Sheet</div>
+      </div>
+      <div class="free-body grid-bg">
+        <p class="free-desc">Bronze, Silver &amp; Gold levels. Full answers included. Years 5–7.</p>
+        <div class="free-links">
+          <a href="https://www.teacherspayteachers.com/Product/Title-Intro-to-Algebra-21-Practice-Questions-Answers-Free-Worksheet-15706647" target="_blank" rel="noopener" class="pl tpt">TPT</a>
+          <a href="#" class="pl tes" title="Coming soon on Tes">Tes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="free-card">
+      <div class="free-band stripes">
+        <div class="free-tag">Free · 21 Questions</div>
+        <div class="free-title">Algebra Equations Practice Sheet</div>
+      </div>
+      <div class="free-body grid-bg">
+        <p class="free-desc">Bronze, Silver &amp; Gold levels. Full answers included. Years 7–9.</p>
+        <div class="free-links">
+          <a href="https://www.teacherspayteachers.com/Product/Title-Algebra-Equations-21-Practice-Questions-Answers-Free-Worksheet-15706775" target="_blank" rel="noopener" class="pl tpt">TPT</a>
+          <a href="https://www.tes.com/teaching-resource/title-algebra-equations-21-practice-questions-and-answers-13422809" target="_blank" rel="noopener" class="pl tes">Tes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="free-card">
+      <div class="free-band stripes">
+        <div class="free-tag">Free · 21 Questions</div>
+        <div class="free-title">Advanced Algebra Practice Sheet</div>
+      </div>
+      <div class="free-body grid-bg">
+        <p class="free-desc">Bronze, Silver &amp; Gold levels. Full answers included. Years 10–13.</p>
+        <div class="free-links">
+          <a href="https://www.teacherspayteachers.com/Product/Title-Advanced-Algebra-21-Practice-Questions-Answers-Free-Worksheet-15706817" target="_blank" rel="noopener" class="pl tpt">TPT</a>
+          <a href="https://www.tes.com/teaching-resource/advanced-algebra-21-practice-questions-and-answers-13422782" target="_blank" rel="noopener" class="pl tes">Tes</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Mission -->
+  <div class="mission f5">
+    <p>Quality educational resources designed to work in any classroom, anywhere in the world.</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-wm">Open Latitude</div>
+    <div class="footer-links">
+      <a href="https://www.teacherspayteachers.com/store/openlatitude" target="_blank" rel="noopener">TPT Store</a>
+      <a href="https://www.tes.com/teaching-resources/shop/OpenLatitude" target="_blank" rel="noopener">Tes Store</a>
+    </div>
+    <div class="footer-copy">© 2026 Open Latitude · openlatitude.net</div>
+  </div>
+</footer>
+
+</body>
+</html>
